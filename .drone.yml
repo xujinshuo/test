@@ -3,12 +3,13 @@ workspace:
   path: src/
 
 pipeline:
-
   pull-from-ecr:
     image: lpf190/drone-pull-ecr:v0.05
     access_id: ${ecr_access_key}
     secret_key: ${ecr_secret_key}
     region: ap-northeast-1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     when:
       event: push
 
