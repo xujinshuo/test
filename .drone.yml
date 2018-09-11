@@ -9,7 +9,7 @@ pipeline:
     registry: 376045331903.dkr.ecr.ap-northeast-1.amazonaws.com
     secrets: [ ecr_access_key, ecr_secret_key ]
     region: ap-northeast-1
-    dockerfile: Dockerfile-php-fpm-laravel
+    dockerfile: dockerfile-php-fpm-laravel
     tags:
       - latest
     when:
