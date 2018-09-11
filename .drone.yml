@@ -3,6 +3,7 @@ workspace:
   path: src/
 
 pipeline:
+
   pull-from-ecr:
     image: lpf190/drone-pull-ecr:v0.05
     access_id: ${ecr_access_key}
