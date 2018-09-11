@@ -1,0 +1,22 @@
+FROM ubuntu:16.04
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV LC_ALL C.UTF-8
+RUN apt-get update &&\
+  apt-get install -y apt-utils language-pack-en &&\
+  apt-get install -y python-software-properties software-properties-common &&\
+  add-apt-repository -y ppa:ondrej/php &&\
+  apt-get update &&\
+  apt install -y --allow-unauthenticated php7.0-fpm php7.0-memcache php7.0-memcached php7.0-msgpack php7.0-imagick php7.0-cli php7.0-gd php7.0-curl php7.0-dev php7.0-mysqlnd php7.0-sqlite3 php-redis php7.0-pgsql php7.0-xml php7.0-mbstring php7.0-zip php7.0-mcrypt php-imagick php7.0-bcmath &&\
+  apt-get clean &&\
+
+  curl -sS https://getcomposer.org/installer | php &&\
+  mv composer.phar /usr/local/bin/composer &&\
+  composer global require "laravel/installer" &&\
+  useradd worker &&\
+  su worker -c 'composer -v' &&\
+  echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> /etc/profile &&\
+  mkdir /home/worker && chown worker /home/worker &&\
+  cd /home/worker && su worker -c 'composer create-project --prefer-dist laravel/laravel laravel-model'
+
+CMD ["service", "php-fpm", "start"]
