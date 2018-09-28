@@ -7,7 +7,7 @@ RUN apt-get update &&\
   apt-get install -y python-software-properties software-properties-common &&\
   add-apt-repository -y ppa:ondrej/php &&\
   apt-get update &&\
-  apt install -y --allow-unauthenticated php7.1-fpm php7.0-memcache php7.0-memcached php7.0-msgpack php7.0-imagick php7.0-cli php7.0-gd php7.0-curl php7.0-dev php7.0-mysqlnd php7.0-sqlite3 php-redis php7.0-pgsql php7.0-xml php7.0-mbstring php7.0-zip php7.0-mcrypt php-imagick php7.0-bcmath &&\
+  apt install -y --allow-unauthenticated php7.1-fpm php7.1-memcache php7.1-memcached php7.1-msgpack php7.1-imagick php7.1-cli php7.1-gd php7.1-curl php7.1-dev php7.1-mysqlnd php7.1-sqlite3 php-redis php7.1-pgsql php7.1-xml php7.1-mbstring php7.1-zip php7.1-mcrypt php-imagick php7.1-bcmath &&\
   apt-get clean &&\
 
   curl -sS https://getcomposer.org/installer | php &&\
